@@ -1,0 +1,123 @@
+& when (@media-common = true) {
+    [data-content-type$='block'] .block p:last-child {
+        margin-bottom: 0;
+    }
+
+    div.pagebuilder-button-primary {
+        background: transparent;
+        padding: 10px 20px;
+        font-size: @font-size__m;
+        line-height: 21px;
+        font-weight: @font-weight__bold;
+        border: 1px solid @white_color;
+        backdrop-filter: @blur;
+        border-radius: 50px;
+        transition: .3s all;
+
+        &:hover {
+            cursor: pointer;
+            background: @button_hover_opacity;
+            border-color: #fff;
+        }
+    }
+
+    .newsletter_container_column {
+        h2 {
+            color: @white_color;
+            font-weight: @font-weight__bold;
+            line-height: 34px;
+            font-size: @font-size__title;
+            margin: 0 0 16px 0;
+        }
+    }
+
+    .newsletter_container_form {
+        h2 {
+            text-transform: uppercase;
+            line-height: 34px;
+            font-size: @font-size__title;
+            font-weight: @font-weight__bold;
+            color: @theme_color_secondary;
+            margin: 0;
+            margin-bottom: 8px;
+        }
+
+        p {
+            font-size: @font-size__m;
+            color: @text_color_blue;
+            margin: 0;
+        }
+
+        .block.newsletter {
+            width: 100%;
+            max-width: 390px;
+            margin: 0 auto;
+        }
+
+        .block.newsletter .form.subscribe {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            margin: 32px auto;
+
+            .field {
+                max-width: initial;
+                width: 100%;
+            }
+
+            .control {
+                &::before{
+                    content: none
+                }
+
+                input {
+                    background: transparent;
+                    border-width: 0 0 1px 0;
+                    border-color: @imput_border_color_newsletter;
+                    width: 100%;
+                    text-align: center;
+                    margin: 0;
+                    padding: 0 10px;
+                    color: @text_color_blue;
+
+                    &::placeholder {
+                        text-align: center;
+                        color: @text_color_blue;
+                    }
+                }
+            }
+
+            .actions {
+                width: 100%;
+
+                button {
+                    padding: 10px;
+                    border-radius: 50px;
+                    background: @theme_color_secondary;
+                    color: @white_color;
+                    font-size: @font-size__m;
+                    line-height: 21px;
+                    font-weight: @font-weight__bold;
+                    margin-top: 32px;
+                    width: 100%;
+                }
+            }
+        }
+
+        .newsletter_notice {
+            max-width: 390px;
+            margin: 0 auto;
+
+            p,
+            a {
+                font-size: @font-size__s;
+                color: @text_color_blue;
+            }
+
+            a {
+                text-decoration: underline;
+            }
+        }
+    }
+}

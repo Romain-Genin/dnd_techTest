@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  web:
+    image: php:8.2-apache
+    platform: linux/amd64
+    container_name: magento_web
+    ports:
+      - "80:80"
+    volumes:
+      - ./magento:/var/www/html
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html/pub
+    depends_on:
+      - db
+      - elasticsearch
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+  db:
+    image: mysql:5.7
+    platform: linux/amd64
+    container_name: magento_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: magento
+      MYSQL_USER: magento
+      MYSQL_PASSWORD: magento
+    volumes:
+      - db_data:/var/lib/mysql
+
+  elasticsearch:
+    image: elasticsearch:7.17.9  # Use a valid version
+    container_name: magento_elasticsearch
+    platform: linux/amd64
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "9200:9200"
+
+volumes:
+  db_data:

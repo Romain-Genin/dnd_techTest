@@ -1,0 +1,89 @@
+& when (@media-common = true) {
+    .page-footer {
+        width: 100%;
+        background: @theme_color_primary;
+
+        .footer_navigation {
+            padding: 80px 40px;
+            align-items: flex-start;
+        }
+
+        .footer_navigation .footer_links_container {
+            display: flex;
+            flex-direction: row;
+            gap: 50px;
+
+            article {
+                display: flex;
+                flex-wrap: wrap;
+
+                h3 {
+                    width: 100%;
+                    margin-bottom: 16px;
+                    font-weight: @font-weight__bold;
+                    font-size: 1.6rem;
+                }
+
+                ul {
+                    max-width: 300px;
+                    width: 50%;
+                    flex-direction: column;
+                    gap: 8px;
+
+                    li {
+                        width: 100%;
+                    }
+
+                    li::after {
+                        content: none;
+                        display: none;
+                    }
+                }
+            }
+
+        }
+
+        .footer {
+            &.content {
+                max-width: 1280px;
+                border-top: 1px solid @button_hover_opacity;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin-top: 0;
+                align-items: center;
+                padding: 40px;
+                color: @white_color;
+
+                .footer.links {
+                    display: flex;
+                    gap: 8px;
+                    margin: 0;
+                    padding: 0;
+
+                    a {
+                        color: @white_color;
+                        font-size: @font-size__s;
+                        font-weight: @font-weight__regular;
+                    }
+
+                    li {
+                        margin: 0;
+                    }
+
+                    li:not(:last-child):after {
+                        content: '\00B7';
+                        margin-left: 8px;
+                    }
+                }
+            }
+
+
+        }
+
+        .copyright {
+            margin: 0;
+        }
+    }
+
+}

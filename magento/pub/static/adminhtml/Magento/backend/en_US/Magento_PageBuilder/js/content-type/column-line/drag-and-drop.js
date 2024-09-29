@@ -1,0 +1,1 @@
+/var/www/html/vendor/magento/module-page-builder/view/adminhtml/web/js/content-type/column-line/drag-and-drop.js
