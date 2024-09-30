@@ -1,0 +1,1 @@
+/var/www/html/app/code/DND/Catalog/view/frontend/web/js/slider.js

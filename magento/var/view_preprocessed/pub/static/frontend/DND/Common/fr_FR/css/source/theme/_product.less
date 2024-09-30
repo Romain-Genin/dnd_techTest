@@ -1,0 +1,90 @@
+& when (@media-common = true) {
+    .product-list {
+        margin-left: 40px;
+        margin-right: 40px;
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+
+        .slick-track {
+            display: flex;
+            gap: 16px;
+
+            .slick-slide {
+                border: 1px solid @imput_border_color_newsletter;
+                border-radius: 16px;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+
+                > div {
+                    width: 100%;
+
+                    > a:hover {
+                        text-decoration: none;
+                    }
+                }
+
+                img,
+                .product-information {
+                    width: 100%;
+                }
+
+                .product-information {
+                    padding: 16px;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+
+                    .manufacturer {
+                        font-weight: @font-weight__bold;
+                        font-size: 1rem;
+                        line-height: 1.6rem;
+                        color: @color_slider_text;
+                        text-transform: uppercase;
+                    }
+
+                    h2 {
+                        margin: 0 0 16px;
+                        color: @color_slider_title;
+                        font-size: @font-size__s;
+                        font-weight: @font-weight__regular;
+                    }
+
+                    .price {
+                        font-size: @font-size__m;
+                        line-height: 2.1rem;
+                        color: @color_slider_text;
+                        font-weight: @font-weight__bold;
+                    }
+                }
+            }
+        }
+
+        .slick {
+            &-arrow {
+                border-radius: 100%;
+                border: 1px solid @theme_color_secondary;
+                width:44px;
+                height: 44px;
+
+                &::before {
+                    content: @dnd-chevron;
+                    font-family: @dnd-font-family;
+                    padding: 0;
+                    font-size: @font-size__m;
+                    color: @theme_color_secondary;
+                }
+            }
+
+            &-next {
+                transform: rotate(180deg);
+                transform-origin: 50% 25%;
+            }
+        }
+    }
+
+    .slides-cms .product-list {
+        margin: 0;
+    }
+}

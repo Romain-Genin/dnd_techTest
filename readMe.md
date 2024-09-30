@@ -17,6 +17,9 @@ MySQL: ` docker exec -it magento_bd bash`
 Identifiants BO:
   User: magento
   Mdp: magento
+  
+  User: root
+  Mdp: root
 ```
 
 ```bash
