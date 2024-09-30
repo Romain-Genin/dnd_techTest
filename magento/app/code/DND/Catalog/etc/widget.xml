@@ -1,14 +1,4 @@
-<?xml version="1.0"?>
-<!--
-/**
- * ExampleVendor_ExampleModule
- *
- * @category ExampleVendor
- * @package  ExampleVendor_ExampleModule
- * @author   Firstname Lastname <info@scandiweb.com>
- */
--->
-
+<?xml version="1.0" encoding="UTF-8"?>
 <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
     <widget class="DND\Catalog\Block\Widget\Slider" id="slider_products" >
