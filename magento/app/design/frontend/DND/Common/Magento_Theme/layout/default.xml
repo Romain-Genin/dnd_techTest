@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+
+<page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header.panel">
+            <!-- New PHTML block for banner creation -->
+            <block class="Magento\Framework\View\Element\Template" name="banner" template="Magento_Theme::banner.phtml"
+                   after="-"/>
+        </referenceContainer>
+
+        <referenceContainer name="header-wrapper">
+            <!-- Call 2 blocks (left & right) to display links near logo -->
+            <block class="Magento\Framework\View\Element\Template" name="top.links.left" as="topLinksLeft"
+                   template="Magento_Theme::links/left.phtml" before="-"/>
+            <block class="Magento\Customer\Block\Account\Link" name="top.links.right" as="topLinksRight"
+                   template="Magento_Theme::links/right.phtml" after="-">
+                <!-- Add Magento My Account link block in new phtml block -->
+                <block class="Magento\Customer\Block\Account\Link" name="my-account-link">
+                    <arguments>
+                        <argument name="class" xsi:type="string" translate="true">dnd-user</argument>
+                        <argument name="sortOrder" xsi:type="number">110</argument>
+                    </arguments>
+                </block>
+
+                <!-- Add Magento Mminicart block in new phtml block -->
+                <referenceBlock name="minicart">
+                    <block class="Magento\Checkout\Block\Item\Price\Renderer" name="checkout.cart.item.price.sidebar"
+                           template="Magento_Checkout::cart/item/price/sidebar.phtml"/>
+                    <arguments>
+                        <argument name="jsLayout" xsi:type="array">
+                            <item name="components" xsi:type="array">
+                                <item name="minicart_content" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="item.renderer" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+                                                <item name="checkout.cart.item.price.sidebar" xsi:type="array">
+                                                    <item name="component" xsi:type="string">uiComponent</item>
+                                                    <item name="config" xsi:type="array">
+                                                        <item name="template" xsi:type="string">
+                                                            Magento_Checkout/minicart/item/price
+                                                        </item>
+                                                        <item name="displayArea" xsi:type="string">priceSidebar</item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </argument>
+                    </arguments>
+                </referenceBlock>
+            </block>
+        </referenceContainer>
+
+        <referenceContainer name="footer-container">
+            <!-- Call CMS block (from BO) in footer container -->
+            <block class="Magento\Cms\Block\Block" name="footer_reassurance" before="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">reassurance_footer</argument>
+                </arguments>
+            </block>
+
+            <!-- New PHTML block to display links in footer -->
+            <block class="Magento\Framework\View\Element\Template" name="footer.navigation" as="FooterNavigation"
+                   template="Magento_Theme::footer/links.phtml" after="footer_reassurance"/>
+        </referenceContainer>
+
+        <!-- New blocks to display links near footer coyright -->
+        <referenceContainer name="footer_links">
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="cgv" before="-">
+                <arguments>
+                    <argument name="label" xsi:type="string">Conditions générales de vente</argument>
+                    <argument name="path" xsi:type="string">#</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="legal" after="cgc">
+                <arguments>
+                    <argument name="label" xsi:type="string">Mentions légales</argument>
+                    <argument name="path" xsi:type="string">#</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="private" after="legal">
+                <arguments>
+                    <argument name="label" xsi:type="string">Politique de vie privée</argument>
+                    <argument name="path" xsi:type="string">#</argument>
+                </arguments>
+            </block>
+            <referenceBlock name="privacy-policy-link">
+                <arguments>
+                    <argument name="label" xsi:type="string">Préférences de cookies</argument>
+                </arguments>
+            </referenceBlock>
+        </referenceContainer>
+
+        <!-- Move minicart in new section - header right -->
+        <move element="minicart" destination="top.links.right" after="-"/>
+
+        <!-- Move cookie link after all links in footer links block -->
+        <move element="privacy-policy-link" destination="footer_links" after="-"/>
+
+        <!-- Move searchbar in navigatino container -->
+        <move element="top.search" destination="store.menu" after="-"/>
+
+        <!-- Remove elements from layout-->
+        <referenceBlock name="skip_to_content.target" remove="true"/>
+        <referenceBlock name="top.links" remove="true"/>
+        <referenceBlock name="form.subscribe" remove="true"/>
+        <referenceBlock name="contact-us-link" remove="true"/>
+        <referenceBlock name="catalog-search-advanced-link" remove="true"/>
+        <referenceBlock name="sales-guest-form-link" remove="true"/>
+        <referenceBlock name="search-term-popular-link" remove="true"/>
+    </body>
+</page>

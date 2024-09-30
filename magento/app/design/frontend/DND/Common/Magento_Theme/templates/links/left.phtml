@@ -1,0 +1,25 @@
+<?php
+// Block right to display 2 links in header
+
+use Magento\Framework\View\Element\Template;
+
+/** @var $block Template */
+?>
+
+<ul class="top-links top-links-left">
+    <li>
+        <a href="#">
+            <i class="dnd-pin"></i>
+            Nos boutiques
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <i class="dnd-message"></i>
+            Prendre rendez-vous
+        </a>
+    </li>
+</ul>
+
+<?= $block->getChildHtml('minicart'); ?>
+

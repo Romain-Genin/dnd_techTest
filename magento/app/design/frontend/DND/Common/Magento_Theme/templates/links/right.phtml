@@ -1,0 +1,12 @@
+<?php
+// Block right to display account & minicart in header
+use Magento\Framework\View\Element\Template;
+
+/** @var $block Template */
+?>
+
+<ul class="top-links top-links-right">
+    <?= $block->getChildHtml('my-account-link');?>
+    <?= $block->getChildHtml('minicart');?>
+</ul>
+

@@ -1,0 +1,34 @@
+<?php
+
+use DND\Catalog\Block\Widget\Slider;
+use Magento\Framework\Escaper;
+
+/** @var $block Slider */
+/** @var $escaper Escaper */
+
+$categoryId = $block->getCategoryId();
+$products = $block->getProductsFromCategory($categoryId);
+
+
+$image = $block->getProductImageUrl($products[0]);
+
+if (count($products) > 0): ?>
+    <ul class="product-list" data-mage-init='{"SliderProduct":{"slidesToShow": "<?= $block->getSlidesToShow();?>"}}'>
+        <?php foreach ($products as $product): ?>
+            <li class="product-slide">
+                <a href="<?= $product->getProductUrl(); ?>">
+                    <img src="<?= $block->getProductImageUrl($product); ?>" alt="<?= $product->getName(); ?>">
+                    <div class="product-information">
+                        <span class="manufacturer"><?= $product->getAttributeText('manufacturer') ?></span>
+                        <h2><?= $product->getName(); ?></h2>
+                        <span class="price">
+                        <?= $block->formatPrice($product->getPrice()); ?>
+                    </span>
+                    </div>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php else: ?>
+    <p>Aucun produit trouvé dans cette catégorie.</p>
+<?php endif; ?>

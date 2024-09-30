@@ -35,8 +35,8 @@ module.exports = {
     },
     dnd: {
         area: 'frontend',
-        name: 'Magento/DND',
-        locale: 'en_US',
+        name: 'DND/Common',
+        locale: 'fr_FR',
         files: [
             'css/styles-m',
             'css/styles-l'
